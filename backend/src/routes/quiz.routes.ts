@@ -69,7 +69,7 @@ router.get("/next", async (req, res) => {
 
       await pool.query(
         `UPDATE user_state
-         SET streak = $1
+         SET last_question_id = $1
          WHERE user_id = $2`,
         [userState.streak, userId]
       );
@@ -77,13 +77,18 @@ router.get("/next", async (req, res) => {
 
     // 4️⃣ Get question by difficulty
     const questionResult = await pool.query(
-      `SELECT id, difficulty, prompt, choices
-       FROM questions
-       WHERE difficulty = $1
-       ORDER BY RANDOM()
-       LIMIT 1`,
-      [userState.current_difficulty]
-    );
+  `
+  SELECT id, difficulty, prompt, choices
+  FROM questions
+  WHERE difficulty = $1
+  AND id != $2
+  ORDER BY RANDOM()
+  LIMIT 1
+  `,
+  [userState.current_difficulty, userState.last_question_id || null]
+);
+
+
 
     if (questionResult.rows.length === 0) {
       return res.status(404).json({

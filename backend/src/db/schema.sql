@@ -2,7 +2,6 @@ CREATE TABLE IF NOT EXISTS users (
   id UUID PRIMARY KEY,
   created_at TIMESTAMP DEFAULT NOW()
 );
-
 CREATE TABLE IF NOT EXISTS questions (
   id UUID PRIMARY KEY,
   difficulty INT NOT NULL CHECK (difficulty BETWEEN 1 AND 10),
