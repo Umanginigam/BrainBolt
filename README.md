@@ -314,7 +314,11 @@ curl -X POST http://localhost:3001/v1/quiz/answer \
 
 ## 🎥 Demo
 
-Demo video included in project root: **`demo.mp4`**
+Demo video included in project root:
+
+
+https://github.com/user-attachments/assets/cfe2c816-24d8-4c59-ac8e-bd49fd3ba10b
+
 
 Covers: adaptive difficulty in action · score & streak updates · leaderboard live refresh · backend walkthrough
 
@@ -325,3 +329,4 @@ Covers: adaptive difficulty in action · score & streak updates · leaderboard l
 Made with ⚡ — BrainBolt Assignment Submission · 2026
 
 </div>
+
